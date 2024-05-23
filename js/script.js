@@ -1,6 +1,7 @@
 
 // INIZIALIZZIAMO VUE
 // createApp = funzione freccia che richiede tot parametri in una funzione
+
 const { createApp } = Vue;
 
 // const optionObj = {data: function(){return {title: 'Hello Vue!',};},};
@@ -28,6 +29,7 @@ _____________________________________________________________________________*/
 // in questo modo l'applicazione che creiamo con Vue sarà agganciata al DOM
 // da questo momento in poi tutto ciò che vive nel div id="app" sarà monitorato da Vue
 
+// __________________________________________________________________________
 
 createApp({
     data() {
@@ -62,17 +64,18 @@ createApp({
         currentIndex: 0,
       };
     },
-  
+    
+
+    // prev + next scorrono e si resettano = ciclo infinito
     methods: {
       nextImg() {
-        if (this.currentIndex < this.games.length - 1) {
-          this.currentIndex++;
-        }
+        if (this.currentIndex < this.games.length - 1) {this.currentIndex++;} 
+        else {this.currentIndex = 0;}
       },
+
       prevImg() {
-        if (this.currentIndex > 0) {
-          this.currentIndex--;
-        }
+        if (this.currentIndex > 0) {this.currentIndex--;}
+        else {this.currentIndex = this.games.length - 1;}
       },
     },
   }).mount("#app");
